@@ -1,7 +1,0 @@
-.class com/google/common/base/internal/Finalizer$1
-.super java/lang/Object
-.source Finalizer.java
-
-.inner class 1 inner com/google/common/base/internal/Finalizer$1 outer com/google/common/base/internal/Finalizer
-
-
