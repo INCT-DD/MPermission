@@ -81,7 +81,7 @@ def main():
 					for clazz in methodmap[orphan]:
 						#print clazz
 						if clazz in foundclasses:
-							print(clazz + "." + orphan)
+							print clazz + "." + orphan
 				#if resolved:
 				#	print "Resolved: " + resolvedstr
 				#else:

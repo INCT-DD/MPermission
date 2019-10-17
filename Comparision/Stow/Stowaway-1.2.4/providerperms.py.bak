@@ -38,9 +38,9 @@ def checkMap(uri):
 		if and_pattern.match(perm):
 			perms = perm.split(" and ")
 			for i in perms:
-				print(i)
+				print i
 		else:
-			print(perm)
+			print perm
 		sys.stderr.write(uri+" ["+perm+"]\n")
 		return True
 	else:
