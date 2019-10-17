@@ -26,7 +26,7 @@ def readFailedSinks(filename):
 def main():
 	readFailedSinks(sys.argv[1])
 	for line in lines:
-		print(line)
+		print line
 	
 if __name__ == "__main__":
     main()
