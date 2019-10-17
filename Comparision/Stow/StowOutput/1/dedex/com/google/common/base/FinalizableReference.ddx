@@ -1,9 +1,0 @@
-.interface public abstract com/google/common/base/FinalizableReference
-.super java/lang/Object
-.source FinalizableReference.java
-
-
-.method public abstract finalizeReferent()V
-.end method
-
-

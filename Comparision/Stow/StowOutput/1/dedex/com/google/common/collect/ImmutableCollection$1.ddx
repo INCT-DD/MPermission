@@ -1,7 +1,0 @@
-.class com/google/common/collect/ImmutableCollection$1
-.super java/lang/Object
-.source ImmutableCollection.java
-
-.inner class 1 inner com/google/common/collect/ImmutableCollection$1 outer com/google/common/collect/ImmutableCollection
-
-

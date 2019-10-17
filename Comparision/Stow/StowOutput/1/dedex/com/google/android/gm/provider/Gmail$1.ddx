@@ -1,7 +1,0 @@
-.class com/google/android/gm/provider/Gmail$1
-.super java/lang/Object
-.source Gmail.java
-
-.inner class 1 inner com/google/android/gm/provider/Gmail$1 outer com/google/android/gm/provider/Gmail
-
-

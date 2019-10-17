@@ -1,7 +1,0 @@
-.class com/google/android/gm/common/html/parser/HtmlDocument$1
-.super java/lang/Object
-.source HtmlDocument.java
-
-.inner class 1 inner com/google/android/gm/common/html/parser/HtmlDocument$1 outer com/google/android/gm/common/html/parser/HtmlDocument
-
-

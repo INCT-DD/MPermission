@@ -1,7 +1,0 @@
-.class com/google/common/collect/Ordering$IncomparableValueException
-.super java/lang/ClassCastException
-.source Ordering.java
-
-.inner class IncomparableValueException inner com/google/common/collect/Ordering$IncomparableValueException outer com/google/common/collect/Ordering
-
-
