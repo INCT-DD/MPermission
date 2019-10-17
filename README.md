@@ -1,6 +1,8 @@
 ## Android M Permissions Analysis
 Tool to statically analyze permission references within decompiled Android M apps.
 
+![](https://user-images.githubusercontent.com/1757773/67035085-50811e80-f0ef-11e9-9a60-b28abcb3615c.png)
+
 ### Context
 With the release of Android 6.0 (Android M / API Level 23), users can now grant system and 3rd party permissions at runtime instead of during installation.
 
