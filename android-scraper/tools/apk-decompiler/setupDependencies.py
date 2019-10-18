@@ -7,14 +7,13 @@ __author__ = "Kocsen Chung"
 
 import shutil
 import stat
-
 import os
 import sys
+import zipfile
+import urllib.request
 
 if sys.version < '3':
     sys.exit("Please use Python3.")
-import zipfile
-import urllib.request
 
 # # Directory Variables ##
 __DIR = os.path.dirname(os.path.realpath(__file__))
@@ -25,10 +24,8 @@ dex2jar_url = "https://github.com/pxb1988/dex2jar/releases/download/2.0/dex-tool
 dex2jar_zip_destination = lib_dir + "/dex2jar.zip"
 apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.4.0.jar"
 apktools_destination = lib_dir + "/apktool.jar"
-decompiler_url = "https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.36.jar"
 jdcore_url = "https://clojars.org/repo/org/clojars/razum2um/jd-core-java/1.2/jd-core-java-1.2.jar"
 jdcore_destination = lib_dir + "/jd-core-java.jar"
-decompiler_destination = lib_dir + "/procyon-decompiler.jar"
 
 
 def main():
@@ -46,26 +43,19 @@ def main():
     # ############
     print("Downloading dex2jar")
     urllib.request.urlretrieve(dex2jar_url, dex2jar_zip_destination)
-    extract(dex2jar_zip_destination)
-    zip_name = os.path.basename(dex2jar_url).split(".zip")[0]
+    files_inzip = extract(dex2jar_zip_destination)
+    # zip_name = os.path.basename(dex2jar_url).split(".zip")[0]
     # Rename dex2jar.#.#.# to dex2jar
-    os.rename(lib_dir + "/" + zip_name, lib_dir + "/dex2jar")
+    os.rename(lib_dir + "/" + files_inzip[0], lib_dir + "/dex2jar")
     # Remove the zip
     os.remove(dex2jar_zip_destination)
     make_dir_executable(lib_dir + "/dex2jar")
-
 
     # ############
     # # apktools
     # ############
     print("Downloading apktools")
     urllib.request.urlretrieve(apktools_url, apktools_destination)
-
-    # ############
-    # # Procyon decompiler
-    # ############
-    print("Downloading procyon decompiler")
-    urllib.request.urlretrieve(decompiler_url, decompiler_destination)
 
     # ############
     # # jd-core-java
@@ -81,6 +71,7 @@ def extract(path_to_zip):
     print("Extracting " + path_to_zip)
     with zipfile.ZipFile(path_to_zip, "r") as z:
         z.extractall(lib_dir)
+        return z.namelist()
 
 
 def create_lib_dir():

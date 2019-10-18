@@ -12,4 +12,7 @@ __pycache__/
 *.iml
 *.uncompressed
 *.jar
-dex2jar/
+
+# third-party libs
+
+lib/
