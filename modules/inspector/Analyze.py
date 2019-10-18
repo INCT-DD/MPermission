@@ -4,6 +4,8 @@ Analyze: collections permisisons within source project.
 
 import fnmatch
 import os
+from importlib import import_module
+
 
 # from Permissions import Permissions
 
@@ -33,18 +35,19 @@ class Analyze:
             self.api = "23"
 
         try:
-            module = __import__("PermissionsAPI" + self.api)
+            module = import_module("modules.permissions.PermissionsAPI" + self.api)
         except ImportError:
             print("Could not find \'PermissionsAPI" + self.api + ".py\' for your specified API level")
             print("Attempting to run against the default API level 23")
             self.api = "23"
-            module = __import__("PermissionsAPI23")
+            module = import_module("modules.permissions.PermissionsAPI" + self.api)
 
-        my_class = getattr(module, "PermissionsAPI" + self.api)
-        instance = my_class()
+        permissions_api = getattr(module, "PermissionsAPI" + self.api)
+        instance = permissions_api()
 
         # Add any ignored group permissions to the set of individual perms
-        #dangerous_permissions = Permissions().dangerous_permissions
+        # dangerous_permissions = Permissions().dangerous_permissions
+
         dangerous_permissions = instance.dangerous_permissions
         if len(self.ignore['groups']) > 0:
             for group in self.ignore['groups']:
