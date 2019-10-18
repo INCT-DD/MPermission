@@ -5,7 +5,7 @@ Analyze: collections permisisons within source project.
 import fnmatch
 import os
 
-#from Permissions import Permissions
+# from Permissions import Permissions
 
 
 class Analyze:

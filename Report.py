@@ -4,6 +4,7 @@ Report: Writes an analysis text file of the various over/under priviliged
 """
 from Permissions import Permissions
 
+
 class Report:
     """Report object to be printed."""
 
@@ -74,7 +75,6 @@ class Report:
             for group in groups_to_remove:
                 over_requested.pop(group)
 
-        # Now print results to analysis file
         with open(self.analysis_report_filename, "w+") as analysis:
             print(" Analysis Report ".center(50, '-'), file=analysis)
             print("{}".format("Package: " + self.package_name), file=analysis)
@@ -112,4 +112,5 @@ class Report:
             for requested in over_requested.values():
                 print(requested, file=analysis)
             print(file=analysis)
+            # Now print results to analysis file
         print("Analysis printed! Location: " + self.analysis_report_filename)
