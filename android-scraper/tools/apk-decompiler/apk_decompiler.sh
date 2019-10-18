@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Author: Kocsen Chung
 # BSD License
+
 ######
 # Script that uses dex2jar, procyon and apktool to fully
 # convert a apk file to readable source files.

@@ -19,9 +19,11 @@ The result will be found in the script location under a `app.apk.uncompressed` d
 
 ## Implementation details
 ### Dependencies
+- [latest openjdk release](https://openjdk.java.net/install/)
 - [apktools](https://code.google.com/p/android-apktool/)
 - [dex2jar](https://code.google.com/p/dex2jar/)
 - [procyon decompiler](https://bitbucket.org/mstrobel/procyon/wiki/Java%20Decompiler)
+- [jd-core-java](https://github.com/nviennot/jd-core-java)
 
 
 `apktools` is used to get the readable xml.

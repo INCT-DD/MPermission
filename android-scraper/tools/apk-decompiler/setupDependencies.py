@@ -21,11 +21,13 @@ __DIR = os.path.dirname(os.path.realpath(__file__))
 lib_dir = __DIR + "/lib"
 
 # URLS for libraries
-dex2jar_url = "https://dex2jar.googlecode.com/files/dex2jar-0.0.9.15.zip"
+dex2jar_url = "https://github.com/pxb1988/dex2jar/releases/download/2.0/dex-tools-2.0.zip"
 dex2jar_zip_destination = lib_dir + "/dex2jar.zip"
-apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.0.0rc4.jar"
+apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.4.0.jar"
 apktools_destination = lib_dir + "/apktool.jar"
-decompiler_url = "https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.28.jar"
+decompiler_url = "https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.36.jar"
+jdcore_url = "https://clojars.org/repo/org/clojars/razum2um/jd-core-java/1.2/jd-core-java-1.2.jar"
+jdcore_destination = lib_dir + "/jd-core-java.jar"
 decompiler_destination = lib_dir + "/procyon-decompiler.jar"
 
 
@@ -62,8 +64,14 @@ def main():
     # ############
     # # Procyon decompiler
     # ############
-    print("Downloading decompiler")
+    print("Downloading procyon decompiler")
     urllib.request.urlretrieve(decompiler_url, decompiler_destination)
+
+    # ############
+    # # jd-core-java
+    # ############
+    print("Downloading jd-core-java decompiler")
+    urllib.request.urlretrieve(jdcore_url, jdcore_destination)
 
     print("Complete")
 
