@@ -11,4 +11,5 @@ __pycache__/
 *.zip
 *.iml
 *.uncompressed
-
+*.jar
+dex2jar/
