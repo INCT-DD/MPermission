@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 
 from modules.inspector.Analyze import Analyze
 from modules.reports.Report import Report
+from modules.decompiler.Decompile import Decompile
 
 
 def get_manifest_tree(project_root):
@@ -80,19 +81,10 @@ def decompile(apk_path):
     Only decompile the provided APK. The decompiled APK will be
     left within the same directory.
     """
-    apk_name = apk_path.rsplit('/', 1)[-1]
 
-    print("Decompiling " + apk_name)
-    subprocess.call(["./modules/apk-decompiler/apk_decompiler.sh", apk_path])
-    print("Decompilation finished!")
-    print("Moving " + apk_name + " to apk_sources/...")
-    try:
-        shutil.move("modules/apk-decompiler/" + apk_name +
-                    ".uncompressed", "apk_sources/" + apk_name + ".uncompressed")
-        print("Move finished! Check apk_sources/ for the decompiled app.")
-    except FileNotFoundError:
-        print("Error: couldn't find "
-              + apk_name + ".It might already be in apk_sources/")
+    decompiler = Decompile()
+
+    decompiler.run(apk_path)
 
 
 def analyze(source_path, api):
@@ -180,7 +172,7 @@ def main():
         decompile(args.apk[0])  # decompile the provided APK
 
         apk_name = args.apk[0].rsplit('/', 1)[-1]
-        source_path = "apk_sources/" + apk_name + ".uncompressed/"
+        source_path = "apk_sources/" + apk_name
 
         try:
             apilevel = args.apk[1]  # The specified API level
@@ -189,7 +181,7 @@ def main():
 
         analyze(source_path, apilevel)
 
-        #shutil.rmtree(source_path)
+        # shutil.rmtree(source_path)
 
         """
         # config.txt is used to ignore certain permissions
