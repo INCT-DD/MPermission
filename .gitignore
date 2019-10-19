@@ -63,3 +63,4 @@ target/
 venv/
 reports/
 apk_sources/
+lib/
