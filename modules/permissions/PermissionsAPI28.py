@@ -3,7 +3,7 @@ Permissions: container for the normal and dangerous base Android system permissi
 """
 
 
-class Permissions:
+class PermissionsAPI28:
     """System permissions object with permissions and groups."""
 
     def __init__(self):
@@ -35,10 +35,14 @@ class Permissions:
         })
 
         self.normal_permissions = [
+            'ACCEPT_HANDOVER',
             'ACCESS_LOCATION_EXTRA_COMMANDS',
             'ACCESS_NETWORK_STATE',
             'ACCESS_NOTIFICATION_POLICY',
             'ACCESS_WIFI_STATE',
+            'ANSWER_PHONE_CALLS',
+            'BIND_AUTOFILL_SERVICE',
+            'BIND_VISUAL_VOICEMAIL_SERVICE',
             'BLUETOOTH'
             'BLUETOOTH_ADMIN',
             'BROADCAST_STICKY',
@@ -47,16 +51,24 @@ class Permissions:
             'CHANGE_WIFI_STATE',
             'DISABLE_KEYGUARD',
             'EXPAND_STATUS_BAR',
+            'FOREGROUND_SERVICE',
             'GET_PACKAGE_SIZE',
             'INSTALL_SHORTCUT',
+            'INSTANT_APP_FOREGROUND_SERVICE',
             'INTERNET',
             'KILL_BACKGROUND_PROCESSES',
+            'MANAGE_OWN_CALLS',
             'MODIFY_AUDIO_SETTINGS',
             'NFC',
+            'NFC_TRANSACTION_EVENT',
+            'READ_PHONE_NUMBERS',
             'READ_SYNC_SETTINGS',
             'READ_SYNC_STATS',
             'RECEIVE_BOOT_COMPLETED',
             'REORDER_TASKS',
+            'REQUEST_COMPANION_RUN_IN_BACKGROUND',
+            'REQUEST_COMPANION_USE_DATA_IN_BACKGROUND',
+            'REQUEST_DELETE_PACKAGES',
             'REQUEST_IGNORE_BATTERY_OPTIMIZATIONS',
             'REQUEST_INSTALL_PACKAGES',
             'SET_ALARM',
@@ -65,7 +77,7 @@ class Permissions:
             'SET_WALLPAPER_HINTS',
             'TRANSMIT_IR',
             'UNINSTALL_SHORTCUT',
-            'USE_FINGERPRINT',
+            'USE_BIOMETRIC',
             'VIBRATE',
             'WAKE_LOCK',
             'WRITE_SYNC_SETTINGS'
