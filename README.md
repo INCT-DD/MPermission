@@ -9,7 +9,7 @@ This increases an application's susceptibility to over and underprivileging. If 
 
 ## Setup
 
-APKPerm (Android PacKage PERMission) requires Python <=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
+APKPerm (Android PacKage PERMission) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
 
 Before your first run, please execute the `setupDependencies.py` located under `modules/apk-decompiler/`
 
@@ -25,7 +25,7 @@ Bellow you'll find a list with all required third-party libraries:
 
 - [latest openjdk release](https://openjdk.java.net/install/)
 - [apktools](https://ibotpeaches.github.io/Apktool/) (extracts readable xml from the apk file)
-- [dex2jar](https://github.com/pxb1988/dex2jar) (converts the classes.dex files inside an apk to a *.jar files)
+- [dex2jar](https://github.com/pxb1988/dex2jar) (converts the *.dex files inside an apk to *.jar files)
 - [jd-core-java](https://github.com/nviennot/jd-core-java) (decompiles dex2jar *.jar output files to their *.java classes)
 
 ## Usage  

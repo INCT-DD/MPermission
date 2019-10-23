@@ -3,7 +3,7 @@ Permissions: container for the normal and dangerous base Android system permissi
 """
 
 
-class Permissions:
+class PermissionsAPI27:
     """System permissions object with permissions and groups."""
 
     def __init__(self):
@@ -39,6 +39,9 @@ class Permissions:
             'ACCESS_NETWORK_STATE',
             'ACCESS_NOTIFICATION_POLICY',
             'ACCESS_WIFI_STATE',
+            'ANSWER_PHONE_CALLS',
+            'BIND_AUTOFILL_SERVICE',
+            'BIND_VISUAL_VOICEMAIL_SERVICE',
             'BLUETOOTH'
             'BLUETOOTH_ADMIN',
             'BROADCAST_STICKY',
@@ -49,14 +52,20 @@ class Permissions:
             'EXPAND_STATUS_BAR',
             'GET_PACKAGE_SIZE',
             'INSTALL_SHORTCUT',
+            'INSTANT_APP_FOREGROUND_SERVICE',
             'INTERNET',
             'KILL_BACKGROUND_PROCESSES',
+            'MANAGE_OWN_CALLS',
             'MODIFY_AUDIO_SETTINGS',
             'NFC',
+            'READ_PHONE_NUMBERS',
             'READ_SYNC_SETTINGS',
             'READ_SYNC_STATS',
             'RECEIVE_BOOT_COMPLETED',
             'REORDER_TASKS',
+            'REQUEST_COMPANION_RUN_IN_BACKGROUND',
+            'REQUEST_COMPANION_USE_DATA_IN_BACKGROUND',
+            'REQUEST_DELETE_PACKAGES',
             'REQUEST_IGNORE_BATTERY_OPTIMIZATIONS',
             'REQUEST_INSTALL_PACKAGES',
             'SET_ALARM',

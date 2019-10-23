@@ -48,6 +48,13 @@ class Decompile:
                 print("Couldn't remove the old directory. Please, remove it manually and try again.")
                 raise IOError
 
+        if Path(destination + apk_name).exists():
+            try:
+                shutil.rmtree(destination + apk_name)
+            except IOError:
+                print("Couldn't remove the old directory. Please, remove it manually and try again.")
+                raise IOError
+
         print('OK. Continuing...')
         print('Recreating required directory tree...')
 
