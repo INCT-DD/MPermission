@@ -29,6 +29,7 @@ class Analyze:
         print("Analyzing from project root....")
 
         source_root = self.project_root + "/app/src/"
+        print(source_root)
         matches = []
 
         if self.api == "":

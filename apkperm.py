@@ -5,8 +5,6 @@ MPerm: Base driver for the analysis tool.
 
 import argparse
 import os
-import shutil
-import subprocess
 import sys
 import xml.etree.ElementTree as ET
 
@@ -180,8 +178,6 @@ def main():
             apilevel = 23  # Default to API 23 if not specified
 
         analyze(source_path, apilevel)
-
-        # shutil.rmtree(source_path)
 
         """
         # config.txt is used to ignore certain permissions
