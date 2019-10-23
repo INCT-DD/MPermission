@@ -11,10 +11,10 @@ This increases an application's susceptibility to over and underprivileging. If 
 
 APKPerm (Android PacKage PERMission) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
 
-Before your first run, please execute the `setupDependencies.py` located under `modules/apk-decompiler/`
+Before your first run, please execute the `setup.py`:
 
 ```bash
-$ python3 ./modules/apk-decompiler/setupDependencies.py
+$ python3 ./setup.py
 ```
 
 Once it's done, you'll find the appropriate libraries under the `modules/apk-decompiler/lib/` directory.
