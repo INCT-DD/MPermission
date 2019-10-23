@@ -86,7 +86,7 @@ class Decompile:
         print('Extracting *.dex files...')
 
         try:
-            self.getdex(workingdir, )
+            self.getdex(workingdir_raw)
         except IOError:
             print("Couldn't extract the *dex files. Please, check your permissions and try again.")
             raise IOError
