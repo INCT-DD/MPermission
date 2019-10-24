@@ -9,7 +9,7 @@ This increases an application's susceptibility to over and underprivileging. If 
 
 ## Setup
 
-APKPerm (Android PacKage and tracking PERMission, apkperm) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
+APKPerm (Android PacKage PERMission, apkperm) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
 
 Before your first run, please, follow those steps:
 
