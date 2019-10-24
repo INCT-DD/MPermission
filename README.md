@@ -1,5 +1,5 @@
-# Android Package (APK) Permission Analysis Tool
-A simple tool to statically analyze permission references within decompiled Android apps.
+# Android Package (APK) Permission and Tracking Analysis Tool
+A simple tool to statically analyze permission references and trackers within decompiled Android apps.
 
 ## Context
 
@@ -9,15 +9,25 @@ This increases an application's susceptibility to over and underprivileging. If 
 
 ## Setup
 
-APKPerm (Android PacKage PERMission) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
+APKPerm (Android PacKage and tracking PERMission, apkperm) requires Python >=3.5 and the [latest openJDK release](https://openjdk.java.net/install/).
 
-Before your first run, please execute the `setup.py`:
+Before your first run, please, follow those steps:
+
+* Use your distribution package manager to install the `dexdump` tool;
+ 
+ * Install the required python modules:
+ 
+ ```bash
+$ pip install -r ./requirements.txt
+``` 
+ 
+ * Execute the `setup.py` file to download the third-party libraries:
 
 ```bash
 $ python3 ./setup.py
 ```
 
-Once it's done, you'll find the appropriate libraries under the `modules/apk-decompiler/lib/` directory.
+_Once it's done, you'll find the appropriate libraries under the `./lib/` directory._
 
 Bellow you'll find a list with all required third-party libraries:
 
@@ -27,6 +37,8 @@ Bellow you'll find a list with all required third-party libraries:
 - [apktools](https://ibotpeaches.github.io/Apktool/) (extracts readable xml from the apk file)
 - [dex2jar](https://github.com/pxb1988/dex2jar) (converts the *.dex files inside an apk to *.jar files)
 - [jd-core-java](https://github.com/nviennot/jd-core-java) (decompiles dex2jar *.jar output files to their *.java classes)
+- [dexdump](https://android.googlesource.com/platform/dalvik/+/refs/heads/tools_r22.2/dexdump/) (disassemble Android *.dex files)
+- [exodus-standalone](https://github.com/Exodus-Privacy/exodus-standalone) (extracts information about trackers inside an apk file)
 
 ## Usage  
 
@@ -44,6 +56,15 @@ Or in a single pass, like this:
 $ python3 apkperm.py -f [--fullprocess]   apk_path [android_api_version_number_targeted]   # decompiles APK, analyzes against the specified API level number and prints source report / analysis report, then deletes the decompiled source folder
 ```
 
+You can provide any version of the API between 23 and 29 for analysis.
+
+As output the software will generate a couple of files inside of the `./reports/` folder:
+
+* `source_report_package_name.txt` - Includes all files and code snippets where calls to permissions were made;
+* `analysis_package_name.txt` - Includes an in-depth analysis about permissions found in the source analysis;
+* `analysis_package_name.json` - A JSON version of the previous file;
+* `trackers_package_name.json` - Includes all third-party and trackers found in the source analysis;
+* `package_name.csv` - A resume of all information found during the static analysis.
 
 ## Troubleshooting
 
@@ -77,3 +98,4 @@ Big Hugs!
 8. https://github.com/nviennot/jd-core-java
 9. http://www.oracle.com/technetwork/pt/java/javase/downloads/index.html
 10. https://www.mercurial-scm.org/
+11. https://exodus-privacy.eu.org/en/

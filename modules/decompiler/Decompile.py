@@ -67,7 +67,7 @@ class Decompile:
             raise IOError
 
         print('OK. Continuing...')
-        print('Extracting ' + apk_name + 'contents. Please wait.')
+        print('Extracting ' + apk_name + ' contents. Please wait.')
 
         try:
             self.extract(apk_path, workingdir_raw)
