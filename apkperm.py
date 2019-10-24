@@ -6,7 +6,7 @@ MPerm: Base driver for the analysis tool.
 import argparse
 import os
 import sys
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as eT
 
 from modules.inspector.Analyze import Analyze
 from modules.reports.Report import Report
@@ -16,7 +16,7 @@ from modules.decompiler.Decompile import Decompile
 def get_manifest_tree(project_root):
     """Parses AndroidManifest into XML tree."""
     manifest = project_root + "/app/AndroidManifest.xml"
-    tree = ET.parse(manifest)
+    tree = eT.parse(manifest)
     return tree
 
 
@@ -81,36 +81,10 @@ def decompile(apk_path):
     """
 
     decompiler = Decompile()
-
     decompiler.run(apk_path)
 
 
-def analyze(source_path, api):
-    # config.txt is used to ignore certain permissions
-    print("Looking in root for a config.txt...")
-    ignore = {
-        'groups': set(),
-        'individual': set()
-    }
-    try:
-        with open("./config.txt") as config:
-            for index, line in enumerate(config):
-
-                # ignore commented lines
-                if not line.startswith("//"):
-                    if line.startswith("#"):
-                        # groups -- remove '# ' and add to set
-                        sanitized = line[2:].rstrip()
-                        ignore['groups'].add(sanitized)
-                    elif line != '\n':
-                        # specific permissions
-                        sanitized = line.rstrip()
-                        ignore['individual'].add(sanitized)
-        print("Config found. Analysis will ignore the stated permissions.")
-
-    except FileNotFoundError:
-        print("Couldn't find a config.txt. Proceeding with analysis")
-
+def analyze(source_path, api, apk_path=''):
     # Create reports directory if it doesn't exist
     if not os.path.exists('./reports'):
         os.mkdir('./reports')
@@ -125,12 +99,13 @@ def analyze(source_path, api):
     third_party_permissions = get_third_party_permissions(manifest_tree)
 
     # Scrape the source
-    analyzer = Analyze(source_path, package_name, permissions, ignore, str(api))
+    analyzer = Analyze(apk_path, source_path, package_name, permissions, str(api))
     source_report = analyzer.search_project_root()
+    tracker_report = analyzer.search_trackers()
 
     # Analyze and print results
     report = Report(package_name, permissions, third_party_permissions)
-    report.print_analysis(permissions, source_report)
+    report.print_analysis(permissions, source_report, tracker_report)
 
 
 def main():
@@ -163,7 +138,7 @@ def main():
         except IndexError:
             apilevel = 23  # Default to API 23 if not specified
 
-        analyze(source_path, apilevel)
+        analyze(source_path, apilevel, args.apk[0])
 
     elif args.fullprocess:
 
@@ -177,62 +152,7 @@ def main():
         except IndexError:
             apilevel = 23  # Default to API 23 if not specified
 
-        analyze(source_path, apilevel)
-
-        """
-        # config.txt is used to ignore certain permissions
-        print("Looking in root for a config.txt...")
-        ignore = {
-            'groups': set(),
-            'individual': set()
-        }
-        try:
-            with open("./config.txt") as config:
-                for index, line in enumerate(config):
-
-                    # ignore commented lines
-                    if not line.startswith("//"):
-                        if line.startswith("#"):
-                            # groups -- remove '# ' and add to set
-                            sanitized = line[2:].rstrip()
-                            ignore['groups'].add(sanitized)
-                        elif line != '\n':
-                            # specific permissions
-                            sanitized = line.rstrip()
-                            ignore['individual'].add(sanitized)
-            print("Config found. Analysis will ignore the stated permissions.")
-
-        except FileNotFoundError:
-            print("Couldn't find a config.txt. Proceeding with analysis")
-
-        # Create reports directory if it doesn't exist
-        if not os.path.exists('./reports'):
-            os.mkdir('./reports')
-
-        # Parse manifest and validate API
-        source_path = args.apk[0]
-
-        try:
-            api = args.apk[1]  # The specified API level
-        except IndexError:
-            api = 23
-
-        manifest_tree = get_manifest_tree(source_path)
-        validate_minimum_sdk(manifest_tree)
-
-        # Collect permissions
-        package_name = get_package_name(manifest_tree)
-        permissions = get_requested_permissions(manifest_tree)
-        third_party_permissions = get_third_party_permissions(manifest_tree)
-
-        # Scrape the source
-        analyzer = Analyze(source_path, package_name, permissions, ignore, str(api))
-        source_report = analyzer.search_project_root()
-
-        # Analyze and print results
-        report = Report(package_name, permissions, third_party_permissions)
-        report.print_analysis(permissions, source_report)
-    """
+        analyze(source_path, apilevel, args.apk[0])
     else:
         parser.print_help()
 
