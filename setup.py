@@ -16,11 +16,11 @@ lib_dir = __DIR + "/lib/"
 
 # URLS for libraries
 
-exodus_standalone_url = "https://github.com/Exodus-Privacy/exodus-standalone/archive/v1.1.0.zip"
+exodus_standalone_url = "https://github.com/Exodus-Privacy/exodus-standalone/archive/refs/tags/v1.3.2.zip"
 exodus_standalone_zip_destination = lib_dir + "exodus.zip"
-dex2jar_url = "https://github.com/pxb1988/dex2jar/releases/download/2.0/dex-tools-2.0.zip"
+dex2jar_url = "https://github.com/pxb1988/dex2jar/releases/download/v2.1/dex2jar-2.1.zip"
 dex2jar_zip_destination = lib_dir + "dex2jar.zip"
-apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.4.0.jar"
+apktools_url = "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.6.1.jar"
 apktools_destination = lib_dir + "apktool.jar"
 jdcore_url = "https://clojars.org/repo/org/clojars/razum2um/jd-core-java/1.2/jd-core-java-1.2.jar"
 jdcore_destination = lib_dir + "jd-core-java.jar"
